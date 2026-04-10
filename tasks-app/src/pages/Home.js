@@ -9,7 +9,6 @@ function Home() {
     <div>
       <h1>Stack Track Lab</h1>
       <p>Student ID: {STUDENT_ID}</p>
-      <p>Lab ID: {LAB_ID}</p>
 
      <Link to="/question">Go to Question Page</Link>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 function TaskDetails(){
     const{id}=useParams();
-    const [task,setTask]=useState(null);
+    const [tasks,setTasks]=useState([]);
     useEffect(()=>{
         fetch(`http://bvrithcloud.com/api/tasks/${id}`, {
         headers: {
@@ -11,14 +11,24 @@ function TaskDetails(){
       }
     )
     .then(res => res.json())
-    .then(data => setTask(data));
+    .then(data => {
+  console.log(data);
+
+  // ✅ handle both cases
+  setTasks(Array.isArray(data) ? data : [data]);
+});
 },[id]);
-if(!task) return <p>Loading..</p>
+if(!tasks || tasks.length === 0) return <p>Loading..</p>
 return(
     <div>
-        <h1>{task.title}</h1>
-        <p>{task.description}</p>
-        <p>Status: {task.status}</p>
+        <h1>Task Details</h1>
+        {Array.isArray(tasks) &&
+tasks.map(t => (
+  <div key={t.id}>
+    <h3>{t.title}</h3>
+    <p>{t.status}</p>
+  </div>
+))}
     </div>
 );
 }
