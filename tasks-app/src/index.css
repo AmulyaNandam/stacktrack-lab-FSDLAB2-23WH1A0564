@@ -1,5 +1,22 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #ffffff; /* clean white */
+  background-color: #ffffff;
+}
+
+/* remove default spacing */
+h1, h2, h3, p {
+  margin: 5px 0;
+}
+
+/* center content */
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+/* basic container */
+.container {
+  width: 400px;
+  padding: 20px;
 }

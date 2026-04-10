@@ -20,7 +20,7 @@ function QuestionComponent() {
   }, [status]);
 
   return (
-    <div>
+    <div classname = "container">
       <h2>Tasks</h2>
 
       <select
